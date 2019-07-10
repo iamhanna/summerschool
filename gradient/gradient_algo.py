@@ -32,7 +32,7 @@ plt.savefig('function_to_minimize.pdf')
 plt.close()
 
 # initialize the starting point
-scope = 4
+scope = 20
 x_star = np.random.uniform(-scope, scope)
 y_star = np.random.uniform(-scope, scope)
 
@@ -46,4 +46,7 @@ for iteration in range(N_iterations):
     x_star = x_star - alpha * x_gradient_vector
     y_star = y_star - alpha * y_gradient_vector
     z = function_to_minimize(x_star, y_star)
-    print(x_star, y_star, z)
+    if iteration % 50 == 0:
+        print("\niteration {}".format(iteration))
+        print(
+            "x* : {0:.2f} y* : {1:.2f}  value : {2:.2f}".format(x_star, y_star, z))
